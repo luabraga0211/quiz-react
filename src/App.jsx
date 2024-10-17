@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const questions = [
   {
@@ -10,23 +10,29 @@ const questions = [
     options: ['Terra', 'Júpiter', 'Saturno'],
   },
   {
-    question: 'Qual é o nome do criador do React?',
-    options: ['Mark Zuckerberg', 'Jordan Walke', 'Linus Torvalds'],
+    question: 'Qual é o numero com maior valor?',
+    options: ['1', '12', '52', 'Nenhum deles'],
   },
+  {
+    question: 'Qual é o assunto que você mais considera divertido?',
+    options: ['Matemática', 'Ciências', 'Técnico', 'Linguagens'],
+  }
 ];
 
 const App = () => {
-  let currentQuestion = 0;
+  const [Question, setQuestion] = useState(0);
 
   return (
     <div>
-      {currentQuestion < questions.length ? (
+      {Question < questions.length ? (
         <div>
-          <h2>{questions[currentQuestion].question}</h2>
+          <h2>{questions[Question].question}</h2>
           <ul>
-            {questions[currentQuestion].options.map((option, index) => (
+            {questions[Question].options.map((option, index) => (
               <li key={index}>
-                <button onClick={() => currentQuestion++}>{option}</button>
+                <button onClick={() => setQuestion(Question + 1)}>
+                  {option}
+                </button>
               </li>
             ))}
           </ul>
